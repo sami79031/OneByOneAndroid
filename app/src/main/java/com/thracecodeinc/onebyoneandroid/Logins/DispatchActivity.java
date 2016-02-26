@@ -22,9 +22,8 @@ public class DispatchActivity extends Activity {
     super.onCreate(savedInstanceState);
 
     Parse.enableLocalDatastore(this);
+
     Parse.initialize(this);
-
-
 
     // Check if there is current user info
     if (ParseUser.getCurrentUser() != null) {

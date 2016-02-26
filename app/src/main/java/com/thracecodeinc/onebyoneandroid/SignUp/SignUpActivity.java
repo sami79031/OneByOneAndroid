@@ -1,4 +1,4 @@
-package com.thracecodeinc.onebyoneandroid.Logins;
+package com.thracecodeinc.onebyoneandroid.SignUp;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -12,35 +12,39 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
+import com.thracecodeinc.onebyoneandroid.Logins.DispatchActivity;
+import com.thracecodeinc.onebyoneandroid.Logins.LoginActivity;
 import com.thracecodeinc.onebyoneandroid.R;
-import com.thracecodeinc.onebyoneandroid.SignUp.SignUpActivity;
 
 /**
- * Activity which displays a login screen to the user, offering registration as well.
+ * Activity which displays a login screen to the user.
  */
-public class LoginActivity extends Activity {
+public class SignUpActivity extends Activity {
   // UI references.
   private EditText usernameEditText;
   private EditText passwordEditText;
+  private EditText passwordAgainEditText;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    setContentView(R.layout.activity_login);
+    setContentView(R.layout.activity_signup);
 
-    // Set up the login form.
-    usernameEditText = (EditText) findViewById(R.id.username);
-    passwordEditText = (EditText) findViewById(R.id.password);
-    passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+    // Set up the signup form.
+    usernameEditText = (EditText) findViewById(R.id.username_edit_text);
+
+    passwordEditText = (EditText) findViewById(R.id.password_edit_text);
+    passwordAgainEditText = (EditText) findViewById(R.id.password_again_edit_text);
+    passwordAgainEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
       @Override
       public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        if (actionId == R.id.edittext_action_login ||
-                actionId == EditorInfo.IME_ACTION_UNSPECIFIED) {
-          login();
+        if (actionId == R.id.edittext_action_signup ||
+            actionId == EditorInfo.IME_ACTION_UNSPECIFIED) {
+          signup();
           return true;
         }
         return false;
@@ -48,27 +52,20 @@ public class LoginActivity extends Activity {
     });
 
     // Set up the submit button click handler
-    Button actionButton = (Button) findViewById(R.id.action_button);
-    actionButton.setOnClickListener(new View.OnClickListener() {
+    Button mActionButton = (Button) findViewById(R.id.action_button);
+    mActionButton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
-        login();
-      }
-    });
-
-    Button signupButton = (Button) findViewById(R.id.signup_button);
-    signupButton.setOnClickListener(new View.OnClickListener() {
-      public void onClick(View v) {
-        // Starts an intent for the sign up activity
-        startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+        signup();
       }
     });
   }
 
-  private void login() {
+  private void signup() {
     String username = usernameEditText.getText().toString().trim();
     String password = passwordEditText.getText().toString().trim();
+    String passwordAgain = passwordAgainEditText.getText().toString().trim();
 
-    // Validate the log in data
+    // Validate the sign up data
     boolean validationError = false;
     StringBuilder validationErrorMessage = new StringBuilder(getString(R.string.error_intro));
     if (username.length() == 0) {
@@ -82,38 +79,47 @@ public class LoginActivity extends Activity {
       validationError = true;
       validationErrorMessage.append(getString(R.string.error_blank_password));
     }
+    if (!password.equals(passwordAgain)) {
+      if (validationError) {
+        validationErrorMessage.append(getString(R.string.error_join));
+      }
+      validationError = true;
+      validationErrorMessage.append(getString(R.string.error_mismatched_passwords));
+    }
     validationErrorMessage.append(getString(R.string.error_end));
 
     // If there is a validation error, display the error
     if (validationError) {
-      Toast.makeText(LoginActivity.this, validationErrorMessage.toString(), Toast.LENGTH_LONG)
-              .show();
+      Toast.makeText(SignUpActivity.this, validationErrorMessage.toString(), Toast.LENGTH_LONG)
+          .show();
       return;
     }
 
     // Set up a progress dialog
-    final ProgressDialog dialog = new ProgressDialog(LoginActivity.this);
-    dialog.setMessage(getString(R.string.progress_login));
+    final ProgressDialog dialog = new ProgressDialog(SignUpActivity.this);
+    dialog.setMessage(getString(R.string.progress_signup));
     dialog.show();
-    // Call the Parse login method
-    ParseUser.logInInBackground(username, password, new LogInCallback() {
+
+    // Set up a new Parse user
+    ParseUser user = new ParseUser();
+    user.setUsername(username);
+    user.setPassword(password);
+
+    // Call the Parse signup method
+    user.signUpInBackground(new SignUpCallback() {
       @Override
-      public void done(ParseUser user, ParseException e) {
+      public void done(ParseException e) {
         dialog.dismiss();
         if (e != null) {
           // Show the error message
-          Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+          Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
         } else {
           // Start an intent for the dispatch activity
-          Intent intent = new Intent(LoginActivity.this, DispatchActivity.class);
+          Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
           intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
           startActivity(intent);
         }
       }
     });
-
   }
-
 }
-
-
