@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Dima/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/Dima/T/OneByOneAndroid/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1_d20a79fb167dad03057748fe0871c15a8fa771b2.jar" />
+    </item>
+    <item
+        jar="/Users/Dima/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="/Users/Dima/T/OneByOneAndroid/app/build/intermediates/pre-dexed/debug/bolts-applinks-1.4.0_1cc64e38ac4547addc63d7f0702d22158cef1062.jar" />
+    </item>
+    <item
+        jar="/Users/Dima/T/OneByOneAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/Dima/T/OneByOneAndroid/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1_db10a4e2d4c4d81c7fb5a42b1fffd6972c60562f.jar" />
+    </item>
+    <item
+        jar="/Users/Dima/T/OneByOneAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/Dima/T/OneByOneAndroid/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.1.1_e4707303b2b2f4a8df25719183782ea7c7cae8e4.jar" />
+    </item>
+    <item
+        jar="/Users/Dima/T/OneByOneAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/Dima/T/OneByOneAndroid/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.1.1_57198c03014432011f2134a9b40b18f454e65afb.jar" />
+    </item>
+    <item
+        jar="/Users/Dima/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/Dima/T/OneByOneAndroid/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_fe970aa9d4699e1122184bab32746d9f4931053c.jar" />
+    </item>
+    <item
+        jar="/Users/Dima/T/OneByOneAndroid/app/libs/Parse-1.13.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="aeb59f6d2e1abe79bb4d1342eb14bb628c2c5f03">
+        <dex dex="/Users/Dima/T/OneByOneAndroid/app/build/intermediates/pre-dexed/debug/Parse-1.13.0_ce0673af447c1b6fad79db603fd8a843287ba65d.jar" />
+    </item>
+
+</items>
