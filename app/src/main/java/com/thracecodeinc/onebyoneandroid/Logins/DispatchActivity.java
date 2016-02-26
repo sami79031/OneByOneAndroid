@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.parse.Parse;
 import com.parse.ParseUser;
 import com.thracecodeinc.onebyoneandroid.MainActivity;
 
@@ -20,10 +19,6 @@ public class DispatchActivity extends Activity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
-    Parse.enableLocalDatastore(this);
-
-    Parse.initialize(this);
 
     // Check if there is current user info
     if (ParseUser.getCurrentUser() != null) {
